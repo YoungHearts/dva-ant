@@ -5,36 +5,13 @@ const usersService={
 		return API.fetch(page,PAGE_SIZE);
 	  },
 		remove(id) {//删除
-		return API.remove(id,{
-			method: 'POST',
-		  body:  `id=${id}` 
-		},);
+		return API.remove(id);
 	  },
 	  patch(id,values) {//编辑
-		return API.patch(id,{
-		  method: 'POST',
-		  body: JSON.stringify(values),
-		});
+			return API.patch({id,...values});
 	  },
-		create(id,values) {//创建
-		return API.create(id,{
-		  method: 'POST',
-		  body: JSON.stringify(values),
-		});
+		create(values) {//创建
+			return API.create(values);
 	  },
 }
 export default usersService
-// export function fetch({ page = 1 }) {//加载
-//   return request(`/api/users?_page=${page}&_limit=${PAGE_SIZE}`);
-// }
-// export function remove(id) {//删除
-//   return request(`/api/users/${id}`, {
-//     method: 'DELETE',
-//   });
-// }
-// export function patch(id, values) {//编辑
-//   return request(`/api/users/${id}`, {
-//     method: 'PATCH',
-//     body: JSON.stringify(values),
-//   });
-// }

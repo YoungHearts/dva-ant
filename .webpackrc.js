@@ -1,17 +1,18 @@
+
 export default {
-    // "disableCSSModules": true,  
-      "proxy": {
-        "/system": {
-          "target": "http://192.168.1.200:8090",
-          "changeOrigin": true,
-          // "pathRewrite": { "^/system" : "" }
-        },
+  // "disableCSSModules": true,  
+    "proxy": {
+      "/system": {
+        "target": "http://192.168.1.200:8090",
+        "changeOrigin": true,
+        // "pathRewrite": { "^/system" : "" }
       },
-      // "proxy": {
-      //     "/api": {
-      //       "target": "http://jsonplaceholder.typicode.com/",
-      //       "changeOrigin": true,
-      //       "pathRewrite": { "^/api" : "" }
-      //     }
-      //   },
-  }
+    },
+    // "proxy": {
+    //     "/api": {
+    //       "target": "http://jsonplaceholder.typicode.com/",
+    //       "changeOrigin": true,
+    //       "pathRewrite": { "^/api" : "" }
+    //     }
+    //   },
+}

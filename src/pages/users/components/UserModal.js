@@ -29,7 +29,8 @@ class UserEditModal extends Component {
   okHandler = () => {
     const { onOk,isCreate } = this.props;
     this.props.form.validateFields((err, values) => {
-      isCreate&&(values = Object.assign(values, {createDate:new Date()}));
+      let createDate=new Date();
+      isCreate&&(values = Object.assign(values, {createDate}));
       if (!err) {
         onOk(values);
         this.hideModelHandler();
@@ -38,9 +39,9 @@ class UserEditModal extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children,isCreate } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { userName, prizeName,isConvert} = this.props.record;
+    const { userName, prizeName,isConvert,createDate} = this.props.record;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
@@ -81,7 +82,7 @@ class UserEditModal extends Component {
             
             <FormItem
               {...formItemLayout}
-              label="是否中奖"
+              label="是否使用"
         >
           {getFieldDecorator('isConvert', {
                   initialValue: isConvert,
@@ -97,6 +98,16 @@ class UserEditModal extends Component {
             </Select>
           )}
         </FormItem>
+        {!isCreate&&<FormItem
+              {...formItemLayout}
+              label="中奖时间"
+            >
+              {
+                getFieldDecorator('createDate', {
+                  initialValue: createDate,
+                })(<Input disabled/>)
+              }
+            </FormItem>}
           </Form>
         </Modal>
       </span>

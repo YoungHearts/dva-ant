@@ -18,14 +18,9 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default async function request(url, options) {
-  if(options&&options.method==="POST"){
-    options.headers={'Content-Type':"application/x-www-form-urlencoded"}
-  }
-  const response = await fetch(url, options).then((res)=>{
-    return res;
-  });
-  checkStatus(response);
+  const response = await fetch(url, options);
 
+  checkStatus(response);
 
   const data = await response.json();
 
