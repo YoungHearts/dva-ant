@@ -21,7 +21,6 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
   }
 
   function editHandler(id, values) {//编辑
-    console.log(id,values);
     dispatch({
       type: 'users/patch',
       payload: { id, values },
@@ -77,7 +76,7 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
     <div className={styles.normal}>
       <div>
         <div className={styles.create}>
-          <UserModal record={{}} onOk={createHandler}>
+          <UserModal record={{}} isCreate={true} onOk={createHandler}>
             <Button type="primary">Create User</Button>
           </UserModal>
         </div>

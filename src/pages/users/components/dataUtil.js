@@ -1,10 +1,7 @@
 // import { DataOrginizeUtil } from './data-orginize-util';
 
 //字段配置
-const allConfigs = [
-    //基础信息
-    { field: 'name', name: '名称', type: '' },
-];
+const allConfigs = { field: 'name', name: '名称', type: '' };
 // 字段组配置
 // 基础信息
 const ProductBaseFields = [

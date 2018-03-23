@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Modal, Form, Input } from 'antd';
+import { Modal, Form, Input,Select} from 'antd';
+const Option = Select.Option;
 
 const FormItem = Form.Item;
 
@@ -26,8 +27,9 @@ class UserEditModal extends Component {
   };
 
   okHandler = () => {
-    const { onOk } = this.props;
+    const { onOk,isCreate } = this.props;
     this.props.form.validateFields((err, values) => {
+      isCreate&&(values = Object.assign(values, {createDate:new Date()}));
       if (!err) {
         onOk(values);
         this.hideModelHandler();
@@ -38,7 +40,7 @@ class UserEditModal extends Component {
   render() {
     const { children } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const { name, email, website } = this.props.record;
+    const { userName, prizeName,isConvert} = this.props.record;
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
@@ -58,34 +60,43 @@ class UserEditModal extends Component {
           <Form onSubmit={this.okHandler}>
             <FormItem
               {...formItemLayout}
-              label="Name"
+              label="会员姓名"
             >
               {
-                getFieldDecorator('name', {
-                  initialValue: name,
+                getFieldDecorator('userName', {
+                  initialValue: userName,
                 })(<Input />)
               }
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label="Email"
+              label="奖品名称"
             >
               {
-                getFieldDecorator('email', {
-                  initialValue: email,
+                getFieldDecorator('prizeName', {
+                  initialValue: prizeName,
                 })(<Input />)
               }
             </FormItem>
+            
             <FormItem
               {...formItemLayout}
-              label="Website"
+              label="是否中奖"
+        >
+          {getFieldDecorator('isConvert', {
+                  initialValue: isConvert,
+                  rules: [
+                    { required: false, message: 'Please select your country!' },
+                  ],
+          })(
+            <Select placeholder="请选择"
+              // onChange={this.handleSelectChange}
             >
-              {
-                getFieldDecorator('website', {
-                  initialValue: website,
-                })(<Input />)
-              }
-            </FormItem>
+              <Option value='1'>1</Option>
+              <Option value='0'>0</Option>
+            </Select>
+          )}
+        </FormItem>
           </Form>
         </Modal>
       </span>

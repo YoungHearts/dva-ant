@@ -17,6 +17,10 @@ const API = {
         console.log(options);
         return request(`/system/winner/add`, options);
     },
+    create(id,options) {//编辑
+        console.log(options);
+        return request(`/system/winner/add`, options);
+    },
 
 };
 

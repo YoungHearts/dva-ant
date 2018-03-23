@@ -12,10 +12,16 @@ const usersService={
 	  },
 	  patch(id,values) {//编辑
 		return API.patch(id,{
-		  method: 'PATCH',
+		  method: 'POST',
 		  body: JSON.stringify(values),
 		});
-	  }
+	  },
+		create(id,values) {//创建
+		return API.create(id,{
+		  method: 'POST',
+		  body: JSON.stringify(values),
+		});
+	  },
 }
 export default usersService
 // export function fetch({ page = 1 }) {//加载

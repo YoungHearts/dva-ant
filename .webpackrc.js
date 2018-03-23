@@ -2,7 +2,7 @@ export default {
     // "disableCSSModules": true,  
       "proxy": {
         "/system": {
-          "target": "http://192.168.1.174:8090",
+          "target": "http://192.168.1.200:8090",
           "changeOrigin": true,
           // "pathRewrite": { "^/system" : "" }
         },
