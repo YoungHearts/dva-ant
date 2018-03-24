@@ -18,6 +18,10 @@ const API = {
         console.log(options);
         return axios.post(`/system/winner/add`, options);
     },
+    search(options) {//搜索
+        console.log(options);
+        return axios.get(`/system/winner/share?searchStr=${options}`);
+    },
 
 };
 

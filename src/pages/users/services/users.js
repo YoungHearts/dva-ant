@@ -13,5 +13,8 @@ const usersService={
 		create(values) {//创建
 			return API.create(values);
 	  },
+		search(values) {//创建
+			return API.search(values);
+	  },
 }
 export default usersService

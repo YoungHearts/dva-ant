@@ -53,7 +53,7 @@ class UserEditModal extends Component {
           { children }
         </span>
         <Modal
-          title="Edit User"
+          title="Edit"
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModelHandler}

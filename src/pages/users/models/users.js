@@ -26,7 +26,6 @@ export default {
     },
     *remove({ payload: id }, { call, put, select }) {
       yield call(usersService.remove, id);
-      console.log(id);
       const page = yield select(state => state.users.page);
       yield put({ type: 'fetch', payload: { page } });
     },
@@ -39,6 +38,9 @@ export default {
       yield call(usersService.create, values);
       const page = yield select(state => state.users.page);
       yield put({ type: 'fetch', payload: { page } });
+    },
+    *search({ payload: values }, { call, put, select }) {
+      yield call(usersService.search, values);
     },
   },
   subscriptions: {
