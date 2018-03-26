@@ -6,7 +6,7 @@ const ColProps = {
   xs: 24,
   sm: 12,
   style: {
-    marginBottom: 16
+    marginBottom: 15
   }
 };
 const TwoColProps = {
@@ -48,13 +48,13 @@ class Filter extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <Row gutter={24}>
-        <Col {...ColProps} xl={{ span: 8 }} sm={{ span: 6 }}>
+        <Col {...ColProps} xl={{ span: 8 }} md={{ span: 12 }}>
           {getFieldDecorator("name", { initialValue: name })(
             <Search placeholder="搜索" onSearch={this.handleSubmit} />
           )}
         </Col>
         <Col
-          {...TwoColProps} xl={{ span: 2 }} sm={{ span: 3 }}
+          {...TwoColProps} xl={{ span: 16 }} md={{ span: 12 }}
         >
           <div
             style={{
@@ -73,16 +73,16 @@ class Filter extends Component {
               </Button>
               {/* <Button onClick={handleReset}>Reset</Button> */}
             </div>
+            <div>
+              <UserModal record={{}} isCreate={true} onOk={createHandler}>
+                <Button type="ghost">添加数据</Button>
+              </UserModal>
+              {/* <Button type="ghost" onClick={onAdd}>Create</Button> */}
+            </div>
           </div>
         </Col>
-        <Col {...ColProps} xl={{ span: 2 }} sm={{ span: 3 }}>
-          <div>
-            <UserModal record={{}} isCreate={true} onOk={createHandler}>
-              <Button type="ghost">添加数据</Button>
-            </UserModal>
-            {/* <Button type="ghost" onClick={onAdd}>Create</Button> */}
-          </div>
-        </Col>
+        {/* <Col {...ColProps} xl={{ span: 2 }} sm={{ span: 3 }}>
+        </Col> */}
       </Row>
     );
   }
